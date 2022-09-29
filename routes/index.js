@@ -1,21 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const message = require('../controllers/message')
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date()
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date()
-  }
-];
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mini Message Board', messages:messages });
-});
+router.get('/', message.index);
+
+router.get('/new', message.message_create);
+
+router.post('/new', message.message_post)
 
 module.exports = router;

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    form(method='POST' action='/new')
+        label Author Name
+        input(name='author')
+        label Message
+        input(name='message')
+        button(type='submit') Submit!
