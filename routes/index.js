@@ -5,8 +5,10 @@ const message = require('../controllers/message')
 /* GET home page. */
 router.get('/', message.index);
 
-router.get('/new', message.message_create);
+router.route('/new')
+  .get(message.displayMessageForm)
+  .post(message.createMessage);
 
-router.post('/new', message.message_post)
+
 
 module.exports = router;

@@ -4,16 +4,22 @@ const messages = [{
   text: "Hello World!", user: "Charles", added: new Date()
 }];
 
-exports.index = function (req, res) {
+const index = (req, res) => {
   res.render('index', {title: 'Mini Message Board', messages: messages});
 }
 
-exports.message_create = function (req, res) {
+const displayMessageForm = (req, res) => {
   res.render('form')
 }
 
-exports.message_post = function (req, res) {
+const createMessage = (req, res) => {
   const {message, author} = req.body
   messages.push({text: message, author: author, added: new Date()})
   res.redirect('/')
+}
+
+module.exports = {
+  index,
+  displayMessageForm,
+  createMessage
 }
